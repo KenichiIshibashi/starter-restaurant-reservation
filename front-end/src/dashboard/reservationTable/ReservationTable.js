@@ -1,14 +1,12 @@
 import React from "react";
 import ReservationRow from "./ReservationRow";
 import { cancelReservation } from "../../utils/api";
-import { useHistory } from "react-router-dom";
 
 export default function ReservationTable({
   reservations,
   setReservations,
   setError,
 }) {
-  const history = useHistory();
   if (!reservations) {
     return null;
   }
