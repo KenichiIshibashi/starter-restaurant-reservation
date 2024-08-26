@@ -12,6 +12,9 @@ exports.up = function (knex) {
   });
 };
 
-exports.down = function (knex) {
-  return knex.schema.dropTable("tables");
+exports.down = async function (knex) {
+  const hasTablesTable = await knex.schema.hasTable("tables");
+  if (hasTablesTable) {
+    return knex.schema.dropTable("tables");
+  }
 };

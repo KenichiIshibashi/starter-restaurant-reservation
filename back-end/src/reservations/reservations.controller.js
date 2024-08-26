@@ -2,9 +2,9 @@
  * List handler for reservation resources
  */
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const service = require("./reservatrions.service");
+const service = require("./reservations.service");
 
-const VALID_REVSERVATION_FIELDS = [
+const VALID_RESERVATION_FIELDS = [
   "first_name",
   "last_name",
   "mobile_number",
@@ -183,11 +183,9 @@ async function create(req, res) {
   const { data: reservation } = req.body;
   const newReservation = await service.create(reservation);
 
-  res
-    .status(201)
-    .json({
-      data: { ...reservation, reservation_id: newReservation.reservation_id },
-    });
+  res.status(201).json({
+    data: { ...reservation, reservation_id: newReservation.reservation_id },
+  });
 }
 
 async function read(req, res) {
