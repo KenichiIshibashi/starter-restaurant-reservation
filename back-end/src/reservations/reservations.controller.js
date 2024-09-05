@@ -199,7 +199,6 @@ async function update(req, res) {
     reservation_Id,
     req.body.data.status
   );
-
   res.json({ data: updatedReservation });
 }
 
