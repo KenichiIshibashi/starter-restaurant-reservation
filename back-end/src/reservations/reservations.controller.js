@@ -213,10 +213,16 @@ async function modify(req, res, next) {
 }
 
 async function list(req, res) {
+  const today = new Date();
+  const formattedDate = `${today.getFullYear()}-${String(
+    today.getMonth() + 1
+  ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  console.log(formattedDate);
+  console.log("logging from the list function");
   const { date, mobile_number } = req.query;
   const reservations = mobile_number
     ? await service.search(mobile_number)
-    : await service.listByDate(date || "");
+    : await service.listByDate(date || formattedDate);
 
   res.json({ data: reservations });
 }

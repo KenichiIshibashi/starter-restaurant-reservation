@@ -29,6 +29,7 @@ function list() {
 }
 
 function listByDate(reservation_date) {
+  console.log(reservation_date);
   return knex("reservations")
     .select("*")
     .where({ reservation_date })
